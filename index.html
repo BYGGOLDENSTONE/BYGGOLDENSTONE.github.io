@@ -15,21 +15,30 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="favicon.png">
 <style>
-  /* ---- Oyun tema fontları (kaynak: stream-console) ---- */
+  /* ---- Oyun tema fontları (kaynak: stream-console) ----
+     size-adjust: her fontun kendi iç ölçüsü farklı (Alegreya %8 küçük, Metamorphous %7 büyük
+     çizer). Değerler fontların gerçek metriklerinden hesaplandı; hedef = Segoe UI
+     (x-yüksekliği 0.50 em / büyük harf yüksekliği 0.70 em). Gövde fontları x-yüksekliğine,
+     başlık fontları (hep BÜYÜK HARF) büyük harf yüksekliğine göre normalize edildi.
+     Böylece tema değişince yalnız font karakteri değişir, algılanan boyut sabit kalır. */
   @font-face {
     font-family: 'Oxanium'; font-style: normal; font-weight: 400 800; font-display: swap;
+    size-adjust: 101%;   /* cap 0.690 → 0.70 */
     src: url(fonts/oxanium-latin.woff2) format('woff2');
   }
   @font-face {
     font-family: 'Metamorphous'; font-style: normal; font-weight: 400; font-display: swap;
+    size-adjust: 94%;    /* cap 0.747 → 0.70 */
     src: url(fonts/metamorphous-latin.woff2) format('woff2');
   }
   @font-face {
     font-family: 'Rajdhani'; font-style: normal; font-weight: 500; font-display: swap;
+    size-adjust: 102%;   /* x 0.510 / cap 0.643 — ikisinin ortası */
     src: url(fonts/rajdhani-500-latin.woff2) format('woff2');
   }
   @font-face {
     font-family: 'Alegreya Sans'; font-style: normal; font-weight: 500; font-display: swap;
+    size-adjust: 108%;   /* x 0.461 → 0.50 */
     src: url(fonts/alegreyasans-500-latin.woff2) format('woff2');
   }
 
@@ -86,6 +95,9 @@
     background-image: var(--bg-image);
     color: var(--text);
     font-family: var(--body-font);
+    /* Satır yükseklikleri her yerde sabit sayı: "normal" fontun kendi metriğinden geldiği için
+       tema değişince kutu boyları oynuyordu. Sabitlenince buton/kart boyu fonttan bağımsız. */
+    line-height: 1.35;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -108,19 +120,21 @@
   h1 {
     font-family: var(--title-font);
     font-size: 1.75rem;
+    line-height: 1.2;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--c1);
     text-shadow: 0 0 18px var(--glow1);
     transition: color 0.45s ease, text-shadow 0.45s ease;
   }
-  .tagline { color: var(--dim); margin-top: 8px; font-size: 1rem; }
+  .tagline { color: var(--dim); margin-top: 8px; font-size: 1rem; line-height: 1.4; }
 
   /* ---- 3 sütun ---- */
   .columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; align-items: start; }
   .section {
     color: var(--dim);
     font-size: 0.8rem;
+    line-height: 1.3;
     letter-spacing: 0.24em;
     text-transform: uppercase;
     text-align: center;
@@ -141,6 +155,7 @@
     color: var(--text);
     text-decoration: none;
     font-size: 1.08rem;
+    line-height: 1.3;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s, background-color 0.45s ease;
   }
   .links a:hover {
@@ -152,7 +167,7 @@
   .links a.primary:hover { border-color: var(--c1); box-shadow: 0 0 20px var(--glow1); }
   .links a .icon { width: 25px; height: 25px; flex-shrink: 0; }
   .links a .label { flex: 1; text-align: left; }
-  .links a .sub { display: block; color: var(--dim); font-size: 0.8rem; margin-top: 3px; }
+  .links a .sub { display: block; color: var(--dim); font-size: 0.8rem; line-height: 1.3; margin-top: 3px; }
 
   /* ---- Oyun kartları (ikonsuz, tipografi odaklı; kart kimliği sayfa temasından bağımsız) ---- */
   .links .game {
@@ -164,12 +179,13 @@
     text-decoration: none;
   }
   div.game { cursor: default; }
-  .gname { display: block; font-size: 1.5rem; font-weight: 700; letter-spacing: 0.14em; }
-  .gsub { display: block; margin-top: 10px; font-size: 0.86rem; }
+  .gname { display: block; font-size: 1.5rem; line-height: 1.25; font-weight: 700; letter-spacing: 0.14em; }
+  .gsub { display: block; margin-top: 10px; font-size: 0.86rem; line-height: 1.3; }
   .badge {
     display: inline-block;
     margin-top: 11px;
     font-size: 0.66rem;
+    line-height: 1.4;
     font-weight: 600;
     letter-spacing: 0.16em;
     border-radius: 999px;
@@ -237,7 +253,7 @@
   .g-th .gsub { color: #8aa3c0; }
   a.g-th:hover { border-color: #ff9a3c; box-shadow: 0 0 16px rgba(255, 154, 60, 0.3); }
 
-  footer { margin-top: 34px; text-align: center; color: var(--dim); font-size: 0.82rem; }
+  footer { margin-top: 34px; text-align: center; color: var(--dim); font-size: 0.82rem; line-height: 1.45; }
   footer a { color: var(--c1); text-decoration: none; transition: color 0.45s ease; }
 
   /* ---- Tema efektleri: sabit katmanlar (tema aktifken görünür) ---- */

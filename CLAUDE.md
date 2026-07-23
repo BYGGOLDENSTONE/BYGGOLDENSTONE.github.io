@@ -16,7 +16,10 @@ Goldenstone Games'in "tüm linkler tek sayfada" sitesi. Bio'lardaki tek link ala
 - Tema değişkenleri `:root` (default = stüdyo: TURUNCU #ff8c3c/#f97316 + MOR #a855f7 — kullanıcı kuralı) ve `html[data-theme="necropunk"|"timberheim"]` bloklarında.
 - Oyun kartındaki `data-set-theme` attribute'u: kartın üstüne gelince `<html data-theme=...>` değişir → TÜM sayfa (zemin, başlık, çerçeveler, fontlar) o oyunun temasına döner ve başka karta gelene dek kalır; sayfa yenilenince default'a döner. Steel Heaven kartı `data-set-theme="default"` (kendi teması yok, stüdyo kimliği — kullanıcı kararı 2026-07-23).
 - Oyun kartlarının KENDİ görünümü sayfa temasından bağımsız sabittir (`.g-sh`, `.g-np`, `.g-th` sınıfları).
-- **Tema efekt katmanları** (body sonunda, `pointer-events:none`, tema aktifken görünür): `#fx-scan` = Necropunk scanline; Necropunk'ta ayrıca h1 glitch (data-text + ::before/::after clip) ve buton hover'da glitch jitter + RGB split; `#fx-snow` = Timberheim yağan kar; `#fx-rune` = sağ alt köşede rünik taş (inline SVG — rün KARAKTERLERİ değil, mobilde tofu çıkmasın diye çizim; dar ekranda gizli). `prefers-reduced-motion` durumunda animasyonlar kapalı.
+- **Tema efekt katmanları** (body sonunda, `pointer-events:none`, tema aktifken görünür):
+  - Necropunk: `#fx-scan` scanline; `#fx-beacon` dönen kızıl fener (conic huzme, 9 sn'de bir kullanıcıya dönüp kızıl parlama); `.page`'de aralıklı sayfa geneli glitch patlamaları (7 sn döngü); h1 glitch (data-text + clip); buton/oyun hover'da TİTREME YOK (kullanıcı isteği) — hologram: holoFlicker + cyan scanline zemin + yazı dilimi kayması (label/gname'deki `data-text` kopyaları sliceGlitch A/B ile kayar). Yeni link eklerken label'a `data-text` eklemeyi unutma.
+  - Timberheim: `#fx-snow` iki katmanlı kar (17s + 27s farklı periyot → tekrar hissi yok); `#fx-fire` alt ortada titreşen kamp ateşi ışığı (5.2s + 2.3s çift katman); `#fx-rune` sağ altta rünik taş (inline SVG çizim, rün karakteri değil — mobil tofu; dar ekranda gizli).
+  - `prefers-reduced-motion`: animasyonlar kapalı, fener tamamen gizli.
 - Tema kaynağı: `D:\htmlprojects\stream-console\public\assets\themes.css`. NECROPUNK = neon kırmızı #ff2a4d + elektrik mavisi #00d9ff + Oxanium; TIMBERHEIM = buz mavisi #7cc7ff + köz turuncusu #ff9a3c + Metamorphous. Rün süsleri web'de KULLANILMAZ (mobilde tofu çıkarır).
 
 ## Güncelleme akışı

@@ -1,142 +1,420 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="default">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Goldenstone Games — Links</title>
-<meta name="description" content="Solo indie dev building NECROPUNK — an isometric katana roguelite. All links: Discord, YouTube, devlogs, socials.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚔️</text></svg>">
+<meta name="description" content="Solo indie dev building STEEL HEAVEN and NECROPUNK. All links: Steam, Discord, YouTube, devlogs, socials.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://goldenstonegames.com/">
+<meta property="og:title" content="Goldenstone Games — Links">
+<meta property="og:description" content="Solo indie dev building STEEL HEAVEN and NECROPUNK. All links: Steam, Discord, YouTube, devlogs, socials.">
+<meta property="og:image" content="https://goldenstonegames.com/avatar.png">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://goldenstonegames.com/avatar.png">
+<link rel="icon" type="image/png" href="avatar.png">
 <style>
+  /* ---- Oyun tema fontları (kaynak: stream-console) ---- */
+  @font-face {
+    font-family: 'Oxanium'; font-style: normal; font-weight: 400 800; font-display: swap;
+    src: url(fonts/oxanium-latin.woff2) format('woff2');
+  }
+  @font-face {
+    font-family: 'Metamorphous'; font-style: normal; font-weight: 400; font-display: swap;
+    src: url(fonts/metamorphous-latin.woff2) format('woff2');
+  }
+
+  /* ---- Sayfa temaları: default (stüdyo) + oyun kartı hover'ıyla değişenler ---- */
   :root {
     --bg: #0e0a14;
     --panel: #17111f;
-    --orange: #ff8c3c;
-    --orange-hot: #f97316;
-    --purple: #a855f7;
+    --c1: #ff8c3c;      /* birincil vurgu */
+    --c1-hot: #f97316;
+    --c2: #a855f7;      /* ikincil vurgu */
     --text: #ede8f0;
     --dim: #948aa0;
+    --title-font: 'Segoe UI', system-ui, sans-serif;
+    --glow1: rgba(249, 115, 22, 0.4);
+    --glow2: rgba(168, 85, 247, 0.3);
+    --bg-image: radial-gradient(ellipse at 50% -20%, rgba(168, 85, 247, 0.16), transparent 60%),
+                radial-gradient(ellipse at 50% 120%, rgba(249, 115, 22, 0.10), transparent 55%);
   }
+  html[data-theme="necropunk"] {
+    --bg: #05060f;
+    --panel: #0a0d1c;
+    --c1: #ff2a4d;
+    --c1-hot: #ff2a4d;
+    --c2: #00d9ff;
+    --text: #eef4ff;
+    --dim: #7f92b8;
+    --title-font: 'Oxanium', 'Segoe UI', sans-serif;
+    --glow1: rgba(255, 42, 77, 0.55);
+    --glow2: rgba(0, 217, 255, 0.35);
+    --bg-image: radial-gradient(ellipse at 50% -20%, rgba(0, 217, 255, 0.14), transparent 60%),
+                radial-gradient(ellipse at 50% 120%, rgba(255, 42, 77, 0.16), transparent 55%);
+  }
+  html[data-theme="timberheim"] {
+    --bg: #060b14;
+    --panel: #0c1524;
+    --c1: #7cc7ff;
+    --c1-hot: #ff9a3c;
+    --c2: #ff9a3c;
+    --text: #eef6ff;
+    --dim: #8aa3c0;
+    --title-font: 'Metamorphous', 'Segoe UI', serif;
+    --glow1: rgba(124, 199, 255, 0.5);
+    --glow2: rgba(255, 154, 60, 0.35);
+    --bg-image: radial-gradient(ellipse at 50% -20%, rgba(124, 199, 255, 0.14), transparent 60%),
+                radial-gradient(ellipse at 50% 120%, rgba(255, 154, 60, 0.16), transparent 55%);
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: var(--bg);
-    background-image: radial-gradient(ellipse at 50% -20%, rgba(168, 85, 247, 0.16), transparent 60%), radial-gradient(ellipse at 50% 120%, rgba(249, 115, 22, 0.10), transparent 55%);
+    background-color: var(--bg);
+    background-image: var(--bg-image);
     color: var(--text);
     font-family: 'Segoe UI', system-ui, sans-serif;
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    padding: 48px 16px;
+    padding: 28px 20px;
+    transition: background-color 0.45s ease, color 0.45s ease;
   }
-  .card { width: 100%; max-width: 460px; text-align: center; }
+  .page { width: 100%; max-width: 1280px; display: flex; flex-direction: column; }
+
+  /* ---- Üst kimlik ---- */
+  .hero { text-align: center; margin-bottom: 30px; }
   .avatar {
-    width: 132px;
-    height: 132px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
-    margin-bottom: 18px;
-    border: 2px solid rgba(255, 140, 60, 0.6);
-    box-shadow: 0 0 24px rgba(249, 115, 22, 0.35), 0 0 48px rgba(168, 85, 247, 0.3);
+    margin-bottom: 12px;
+    border: 2px solid var(--c1);
+    box-shadow: 0 0 24px var(--glow1), 0 0 48px var(--glow2);
+    transition: border-color 0.45s ease, box-shadow 0.45s ease;
   }
   h1 {
-    font-size: 1.6rem;
-    letter-spacing: 0.18em;
+    font-family: var(--title-font);
+    font-size: 1.75rem;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--orange);
-    text-shadow: 0 0 18px rgba(249, 115, 22, 0.4);
+    color: var(--c1);
+    text-shadow: 0 0 18px var(--glow1);
+    transition: color 0.45s ease, text-shadow 0.45s ease;
   }
-  .tagline { color: var(--dim); margin: 10px 0 6px; font-size: 0.95rem; line-height: 1.5; }
-  .links { display: flex; flex-direction: column; gap: 12px; }
+  .tagline { color: var(--dim); margin-top: 8px; font-size: 1rem; }
+
+  /* ---- 3 sütun ---- */
+  .columns { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; align-items: start; }
+  .section {
+    color: var(--dim);
+    font-size: 0.8rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  /* ---- Link satırları ---- */
+  .links { display: flex; flex-direction: column; gap: 14px; }
   .links a {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 15px;
     background: var(--panel);
-    border: 1px solid rgba(168, 85, 247, 0.3);
+    border: 1px solid color-mix(in srgb, var(--c2) 30%, transparent);
     border-radius: 12px;
-    padding: 14px 18px;
+    padding: 16px 19px;
     color: var(--text);
     text-decoration: none;
-    font-size: 1rem;
-    transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+    font-size: 1.08rem;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s, background-color 0.45s ease;
   }
   .links a:hover {
-    border-color: var(--purple);
-    box-shadow: 0 0 16px rgba(168, 85, 247, 0.3);
+    border-color: var(--c2);
+    box-shadow: 0 0 16px color-mix(in srgb, var(--c2) 30%, transparent);
     transform: translateY(-1px);
   }
-  .links a.primary {
-    border-color: var(--orange-hot);
-    box-shadow: 0 0 14px rgba(249, 115, 22, 0.2);
-  }
-  .links a.primary:hover { border-color: var(--orange); box-shadow: 0 0 20px rgba(249, 115, 22, 0.4); }
-  .links a .icon { font-size: 1.25rem; width: 28px; text-align: center; flex-shrink: 0; }
+  .links a.primary { border-color: color-mix(in srgb, var(--c1-hot) 65%, transparent); box-shadow: 0 0 14px color-mix(in srgb, var(--c1-hot) 20%, transparent); }
+  .links a.primary:hover { border-color: var(--c1); box-shadow: 0 0 20px var(--glow1); }
+  .links a .icon { width: 25px; height: 25px; flex-shrink: 0; }
   .links a .label { flex: 1; text-align: left; }
-  .links a .sub { display: block; color: var(--dim); font-size: 0.78rem; margin-top: 2px; }
-  .soon {
-    display: flex; align-items: center; gap: 14px;
-    background: var(--panel);
-    border: 1px dashed rgba(138, 138, 160, 0.35);
+  .links a .sub { display: block; color: var(--dim); font-size: 0.8rem; margin-top: 3px; }
+
+  /* ---- Oyun kartları (ikonsuz, tipografi odaklı; kart kimliği sayfa temasından bağımsız) ---- */
+  .links .game {
+    position: relative;
+    display: block;
+    text-align: center;
     border-radius: 12px;
-    padding: 14px 18px;
-    color: var(--dim);
-    font-size: 1rem;
+    padding: 27px 18px 25px;
+    text-decoration: none;
   }
-  .soon .icon { font-size: 1.25rem; width: 28px; text-align: center; flex-shrink: 0; }
-  .soon .label { flex: 1; text-align: left; }
-  .section { color: var(--dim); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; margin: 26px 0 2px; }
-  footer { margin-top: 36px; color: var(--dim); font-size: 0.78rem; }
+  div.game { cursor: default; }
+  .gname { display: block; font-size: 1.5rem; font-weight: 700; letter-spacing: 0.14em; }
+  .gsub { display: block; margin-top: 10px; font-size: 0.86rem; }
+  .badge {
+    display: inline-block;
+    margin-top: 11px;
+    font-size: 0.66rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    border-radius: 999px;
+    padding: 3px 11px;
+  }
+
+  /* STEEL HEAVEN — stüdyo kimliği (kendi teması yapılana dek) */
+  .g-sh {
+    background: #17111f;
+    border: 1px solid rgba(249, 115, 22, 0.55);
+    box-shadow: 0 0 14px rgba(249, 115, 22, 0.15);
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  }
+  .g-sh:hover { border-color: #ff8c3c; box-shadow: 0 0 22px rgba(249, 115, 22, 0.4); transform: translateY(-1px); }
+  .g-sh .gname { color: #fff; text-shadow: 0 0 14px rgba(249, 115, 22, 0.8), 0 0 36px rgba(168, 85, 247, 0.4); }
+  .g-sh .gsub { color: #948aa0; }
+  .g-sh .badge { color: #ff8c3c; border: 1px solid rgba(255, 140, 60, 0.6); }
+
+  /* NECROPUNK — neon kırmızı + elektrik mavisi cyberpunk */
+  .g-np {
+    background: rgba(5, 8, 18, 0.92);
+    border: 1px dashed rgba(0, 217, 255, 0.35);
+    border-radius: 0;
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  }
+  .g-np::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: linear-gradient(180deg, #ff2a4d 0%, #ff2a4d 45%, #00d9ff 100%);
+    box-shadow: 0 0 10px rgba(255, 42, 77, 0.7);
+  }
+  .g-np::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.10;
+    background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0 1px, transparent 1px 4px);
+  }
+  .g-np .gname {
+    font-family: 'Oxanium', 'Segoe UI', sans-serif; letter-spacing: 0.18em;
+    color: #fff; text-shadow: 0 0 14px rgba(255, 42, 77, 0.85), 0 0 36px rgba(255, 42, 77, 0.35);
+  }
+  .g-np .gsub { color: #7f92b8; }
+  a.g-np:hover { border-color: #ff2a4d; box-shadow: 0 0 16px rgba(255, 42, 77, 0.35); }
+
+  /* TIMBERHEIM — buz mavisi + köz turuncusu, kar */
+  .g-th {
+    background: rgba(7, 13, 24, 0.92);
+    border: 1px dashed rgba(124, 199, 255, 0.35);
+  }
+  .g-th::before {
+    content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px; border-radius: 2px;
+    background: linear-gradient(180deg, #b5e0ff 0%, #7cc7ff 45%, #ff9a3c 100%);
+    box-shadow: 0 0 10px rgba(124, 199, 255, 0.55);
+  }
+  .g-th::after {
+    content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.28;
+    background-image:
+      radial-gradient(1.5px 1.5px at 12% 22%, rgba(255, 255, 255, 0.8) 50%, transparent 51%),
+      radial-gradient(1px 1px at 38% 64%, rgba(255, 255, 255, 0.6) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 61% 18%, rgba(214, 236, 255, 0.7) 50%, transparent 51%),
+      radial-gradient(1px 1px at 79% 51%, rgba(255, 255, 255, 0.55) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 91% 82%, rgba(214, 236, 255, 0.6) 50%, transparent 51%);
+  }
+  .g-th .gname {
+    font-family: 'Metamorphous', serif; font-weight: 400; letter-spacing: 0.1em;
+    color: #fff; text-shadow: 0 0 12px rgba(124, 199, 255, 0.7), 0 0 30px rgba(124, 199, 255, 0.3);
+  }
+  .g-th .gsub { color: #8aa3c0; }
+  a.g-th:hover { border-color: #ff9a3c; box-shadow: 0 0 16px rgba(255, 154, 60, 0.3); }
+
+  footer { margin-top: 34px; text-align: center; color: var(--dim); font-size: 0.82rem; }
+  footer a { color: var(--c1); text-decoration: none; transition: color 0.45s ease; }
+
+  /* ---- Tema efektleri: sabit katmanlar (tema aktifken görünür) ---- */
+  #fx-scan, #fx-snow {
+    position: fixed; inset: 0; pointer-events: none; opacity: 0;
+    transition: opacity 0.6s ease; z-index: 5;
+  }
+  #fx-scan { background: repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0 1px, transparent 1px 4px); }
+  html[data-theme="necropunk"] #fx-scan { opacity: 1; }
+  #fx-snow {
+    background-image:
+      radial-gradient(2px 2px at 40px 60px, rgba(255, 255, 255, 0.9) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 120px 200px, rgba(214, 236, 255, 0.75) 50%, transparent 51%),
+      radial-gradient(1px 1px at 220px 120px, rgba(255, 255, 255, 0.6) 50%, transparent 51%);
+    background-size: 260px 260px, 380px 380px, 500px 500px;
+    animation: snowFall 16s linear infinite;
+  }
+  html[data-theme="timberheim"] #fx-snow { opacity: 0.6; }
+  @keyframes snowFall {
+    from { background-position: 0 0, 0 0, 0 0; }
+    to   { background-position: 14px 260px, -18px 380px, 8px 500px; }
+  }
+  #fx-rune {
+    position: fixed; right: 22px; bottom: 18px; pointer-events: none; opacity: 0;
+    transition: opacity 0.6s ease; z-index: 5;
+    filter: drop-shadow(0 0 10px rgba(124, 199, 255, 0.35));
+  }
+  html[data-theme="timberheim"] #fx-rune { opacity: 1; }
+  #fx-rune .runes { animation: runeGlow 3s ease-in-out infinite; }
+  @keyframes runeGlow { 0%, 100% { opacity: 0.75; } 50% { opacity: 1; } }
+
+  /* ---- Necropunk teması aktifken: glitch ---- */
+  @keyframes glitchJitter {
+    0%, 100% { transform: translate(0, 0); }
+    20% { transform: translate(-2px, 1px); }
+    40% { transform: translate(2px, -1px); }
+    60% { transform: translate(-1px, -1px); }
+    80% { transform: translate(1px, 1px); }
+  }
+  @keyframes glitchClipA {
+    0%, 8%, 100% { clip-path: inset(100% 0 0 0); }
+    1% { clip-path: inset(12% 0 76% 0); }
+    3% { clip-path: inset(64% 0 20% 0); }
+    5% { clip-path: inset(30% 0 55% 0); }
+    7% { clip-path: inset(80% 0 6% 0); }
+  }
+  @keyframes glitchClipB {
+    0%, 9%, 100% { clip-path: inset(100% 0 0 0); }
+    2% { clip-path: inset(70% 0 14% 0); }
+    4% { clip-path: inset(20% 0 66% 0); }
+    6% { clip-path: inset(48% 0 38% 0); }
+  }
+  html[data-theme="necropunk"] h1 { position: relative; }
+  html[data-theme="necropunk"] h1::before,
+  html[data-theme="necropunk"] h1::after {
+    content: attr(data-text); position: absolute; left: 0; right: 0; top: 0;
+    text-shadow: none; pointer-events: none;
+  }
+  html[data-theme="necropunk"] h1::before { color: #00d9ff; transform: translateX(-3px); animation: glitchClipA 2.8s infinite steps(1); }
+  html[data-theme="necropunk"] h1::after { color: #ff2a4d; transform: translateX(3px); animation: glitchClipB 3.4s infinite steps(1); }
+  html[data-theme="necropunk"] .links a:hover,
+  html[data-theme="necropunk"] .links .game:hover {
+    animation: glitchJitter 0.35s steps(2) infinite;
+  }
+  html[data-theme="necropunk"] .links a:hover {
+    box-shadow: -3px 0 0 rgba(255, 42, 77, 0.55), 3px 0 0 rgba(0, 217, 255, 0.55), 0 0 18px rgba(255, 42, 77, 0.3);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #fx-snow, #fx-rune .runes,
+    html[data-theme="necropunk"] h1::before, html[data-theme="necropunk"] h1::after,
+    html[data-theme="necropunk"] .links a:hover, html[data-theme="necropunk"] .links .game:hover { animation: none; }
+    html[data-theme="necropunk"] h1::before, html[data-theme="necropunk"] h1::after { content: none; }
+  }
+
+  /* ---- Dar ekran: tek sütun ---- */
+  @media (max-width: 920px) {
+    body { padding: 36px 16px; }
+    .columns { grid-template-columns: 1fr; gap: 28px; max-width: 480px; margin: 0 auto; width: 100%; }
+    #fx-rune { display: none; }
+  }
 </style>
 </head>
 <body>
-  <main class="card">
-    <img class="avatar" src="avatar.png" alt="Goldenstone Games avatar" width="132" height="132">
-    <h1>Goldenstone Games</h1>
-    <p class="tagline">Solo indie dev building brutal little games.</p>
+  <main class="page">
+    <header class="hero">
+      <img class="avatar" src="avatar.png" alt="Goldenstone Games avatar" width="110" height="110">
+      <h1 data-text="Goldenstone Games">Goldenstone Games</h1>
+      <p class="tagline">Solo indie dev building brutal little games.</p>
+    </header>
 
-    <nav class="links" style="margin-top: 24px;">
-      <a class="primary" target="_blank" rel="noopener" href="https://discord.gg/Y9uU22UqtH">
-        <span class="icon">💬</span>
-        <span class="label">Discord<span class="sub">Join the community — feedback shapes the game</span></span>
-      </a>
-      <a target="_blank" rel="noopener" href="https://www.youtube.com/@goldenstonegames">
-        <span class="icon">▶️</span>
-        <span class="label">YouTube<span class="sub">Devlogs &amp; shorts (English)</span></span>
-      </a>
-      <a target="_blank" rel="noopener" href="https://bsky.app/profile/goldenstonegames.bsky.social">
-        <span class="icon">🦋</span>
-        <span class="label">Bluesky<span class="sub">Daily progress</span></span>
-      </a>
-      <a target="_blank" rel="noopener" href="https://x.com/GoldenstoneGmes">
-        <span class="icon">✖️</span>
-        <span class="label">X / Twitter</span>
-      </a>
-      <a target="_blank" rel="noopener" href="https://www.tiktok.com/@goldenstonegamess">
-        <span class="icon">🎵</span>
-        <span class="label">TikTok</span>
-      </a>
-      <a target="_blank" rel="noopener" href="https://www.instagram.com/goldenstonegamess/">
-        <span class="icon">📸</span>
-        <span class="label">Instagram</span>
-      </a>
+    <div class="columns">
+      <section>
+        <h2 class="section">Socials</h2>
+        <nav class="links">
+          <a class="primary" target="_blank" rel="noopener" data-count="/click-discord" href="https://discord.gg/Y9uU22UqtH">
+            <img class="icon" src="icons/discord.svg" alt="">
+            <span class="label">Discord<span class="sub">Join the community — feedback shapes the game</span></span>
+          </a>
+          <a target="_blank" rel="noopener" data-count="/click-youtube" href="https://www.youtube.com/@goldenstonegames">
+            <img class="icon" src="icons/youtube.svg" alt="">
+            <span class="label">YouTube<span class="sub">Devlogs &amp; shorts (English)</span></span>
+          </a>
+          <a target="_blank" rel="noopener" data-count="/click-bluesky" href="https://bsky.app/profile/goldenstonegames.bsky.social">
+            <img class="icon" src="icons/bluesky.svg" alt="">
+            <span class="label">Bluesky<span class="sub">Daily progress</span></span>
+          </a>
+          <a target="_blank" rel="noopener" data-count="/click-x" href="https://x.com/GoldenstoneGmes">
+            <img class="icon" src="icons/x.svg" alt="">
+            <span class="label">X / Twitter</span>
+          </a>
+          <a target="_blank" rel="noopener" data-count="/click-tiktok" href="https://www.tiktok.com/@goldenstonegamess">
+            <img class="icon" src="icons/tiktok.svg" alt="">
+            <span class="label">TikTok</span>
+          </a>
+          <a target="_blank" rel="noopener" data-count="/click-instagram" href="https://www.instagram.com/goldenstonegamess/">
+            <img class="icon" src="icons/instagram.svg" alt="">
+            <span class="label">Instagram</span>
+          </a>
+        </nav>
+      </section>
 
-      <div class="section">Live Development (Turkish)</div>
-      <a target="_blank" rel="noopener" href="https://www.youtube.com/@burakaltintas0">
-        <span class="icon">🔴</span>
-        <span class="label">YouTube Live<span class="sub">Watch the game being built</span></span>
-      </a>
-      <a target="_blank" rel="noopener" href="https://kick.com/burak-altintas">
-        <span class="icon">🟢</span>
-        <span class="label">Kick</span>
-      </a>
+      <section>
+        <h2 class="section">Live Development (Turkish)</h2>
+        <nav class="links">
+          <a target="_blank" rel="noopener" data-count="/click-youtube-live" href="https://www.youtube.com/@burakaltintas0">
+            <img class="icon" src="icons/youtube.svg" alt="">
+            <span class="label">YouTube Live<span class="sub">Watch the game being built</span></span>
+          </a>
+          <a target="_blank" rel="noopener" data-count="/click-kick" href="https://kick.com/burak-altintas">
+            <img class="icon" src="icons/kick.svg" alt="">
+            <span class="label">Kick</span>
+          </a>
+        </nav>
+      </section>
 
-      <div class="section">Steam</div>
-      <div class="soon">
-        <span class="icon">🎮</span>
-        <span class="label">NECROPUNK on Steam — wishlist coming soon</span>
-      </div>
-    </nav>
+      <section>
+        <h2 class="section">Games</h2>
+        <nav class="links">
+          <a class="game g-sh" data-set-theme="default" target="_blank" rel="noopener" data-count="/click-steam-steel-heaven" href="https://store.steampowered.com/app/4296520/STEEL_HEAVEN/">
+            <span class="gname">STEEL HEAVEN</span>
+            <span class="gsub">Wishlist on Steam</span>
+          </a>
+          <div class="game g-np" data-set-theme="necropunk">
+            <span class="gname">NECROPUNK</span>
+            <span class="gsub">Wishlist coming soon on Steam</span>
+          </div>
+          <div class="game g-th" data-set-theme="timberheim">
+            <span class="gname">TIMBERHEIM</span>
+            <span class="gsub">In development — coming soon</span>
+          </div>
+        </nav>
+      </section>
+    </div>
 
-    <footer>Contact: <a href="mailto:goldenstonegames@gmail.com" style="color: var(--orange); text-decoration: none;">goldenstonegames@gmail.com</a><br>© 2026 Goldenstone Games</footer>
+    <footer>Contact: <a data-count="/click-email" href="mailto:goldenstonegames@gmail.com">goldenstonegames@gmail.com</a><br>© 2026 Goldenstone Games</footer>
   </main>
+  <div id="fx-scan" aria-hidden="true"></div>
+  <div id="fx-snow" aria-hidden="true"></div>
+  <div id="fx-rune" aria-hidden="true">
+    <svg viewBox="0 0 130 152" width="112" height="131">
+      <defs>
+        <linearGradient id="stoneg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#26374b"/>
+          <stop offset="1" stop-color="#0c1524"/>
+        </linearGradient>
+      </defs>
+      <path d="M65 6 L104 24 L116 72 L100 134 L62 146 L24 130 L14 68 L30 22 Z"
+            fill="url(#stoneg)" stroke="#7cc7ff" stroke-opacity="0.5" stroke-width="2"/>
+      <g class="runes" stroke="#ff9a3c" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M40 60 V96 M31 70 L40 60 L49 70"/>
+        <path d="M65 56 V100 M65 56 L78 66 L65 76 M65 76 L78 86 L65 96"/>
+        <path d="M92 60 V96 M106 60 V96 M92 72 L106 84"/>
+      </g>
+    </svg>
+  </div>
   <script data-goatcounter="https://goldenstonegames.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script>
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[data-count]');
+      if (!a || !window.goatcounter || !window.goatcounter.count) return;
+      window.goatcounter.count({ path: a.dataset.count, title: a.dataset.count, event: true });
+    });
+    // Oyun kartına gelince tüm sayfa o oyunun temasına döner; başka karta gelene dek kalır.
+    document.querySelectorAll('[data-set-theme]').forEach(function (el) {
+      el.addEventListener('mouseenter', function () {
+        document.documentElement.setAttribute('data-theme', el.dataset.setTheme);
+      });
+    });
+  </script>
 </body>
 </html>

@@ -24,6 +24,14 @@
     font-family: 'Metamorphous'; font-style: normal; font-weight: 400; font-display: swap;
     src: url(fonts/metamorphous-latin.woff2) format('woff2');
   }
+  @font-face {
+    font-family: 'Rajdhani'; font-style: normal; font-weight: 500; font-display: swap;
+    src: url(fonts/rajdhani-500-latin.woff2) format('woff2');
+  }
+  @font-face {
+    font-family: 'Alegreya Sans'; font-style: normal; font-weight: 500; font-display: swap;
+    src: url(fonts/alegreyasans-500-latin.woff2) format('woff2');
+  }
 
   /* ---- Sayfa temaları: default (stüdyo) + oyun kartı hover'ıyla değişenler ---- */
   :root {
@@ -35,6 +43,7 @@
     --text: #ede8f0;
     --dim: #948aa0;
     --title-font: 'Segoe UI', system-ui, sans-serif;
+    --body-font: 'Segoe UI', system-ui, sans-serif;
     --glow1: rgba(249, 115, 22, 0.4);
     --glow2: rgba(168, 85, 247, 0.3);
     --bg-image: radial-gradient(ellipse at 50% -20%, rgba(168, 85, 247, 0.16), transparent 60%),
@@ -49,6 +58,7 @@
     --text: #eef4ff;
     --dim: #7f92b8;
     --title-font: 'Oxanium', 'Segoe UI', sans-serif;
+    --body-font: 'Rajdhani', 'Segoe UI', sans-serif;
     --glow1: rgba(255, 42, 77, 0.55);
     --glow2: rgba(0, 217, 255, 0.35);
     --bg-image: radial-gradient(ellipse at 50% -20%, rgba(0, 217, 255, 0.14), transparent 60%),
@@ -63,6 +73,7 @@
     --text: #eef6ff;
     --dim: #8aa3c0;
     --title-font: 'Metamorphous', 'Segoe UI', serif;
+    --body-font: 'Alegreya Sans', 'Segoe UI', sans-serif;
     --glow1: rgba(124, 199, 255, 0.5);
     --glow2: rgba(255, 154, 60, 0.35);
     --bg-image: radial-gradient(ellipse at 50% -20%, rgba(124, 199, 255, 0.14), transparent 60%),
@@ -74,7 +85,7 @@
     background-color: var(--bg);
     background-image: var(--bg-image);
     color: var(--text);
-    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-family: var(--body-font);
     min-height: 100vh;
     display: flex;
     justify-content: center;

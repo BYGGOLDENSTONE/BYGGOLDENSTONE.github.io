@@ -3,7 +3,7 @@
 Goldenstone Games'in "tüm linkler tek sayfada" sitesi. Bio'lardaki tek link alanlarına bu URL konur.
 
 ## Yapı
-- `index.html` (self-contained, harici bağımlılık yok) + `avatar.png` (480px; orijinal `D:\UnrealProjects\marketing\brand\pp-original.png`) + `fonts\` (Oxanium/Necropunk, Metamorphous/Timberheim — kaynak: `D:\htmlprojects\stream-console\public\assets\fonts\`) + `icons\` (marka logoları, simple-icons SVG, fill=marka rengi gömülü; koyu zeminde X ve TikTok beyaz).
+- `index.html` (self-contained, harici bağımlılık yok) + `avatar.png` (480px; orijinal `D:\UnrealProjects\marketing\brand\pp-original.png`) + `fonts\` (başlık: Oxanium/Necropunk, Metamorphous/Timberheim; gövde: Rajdhani/Necropunk, Alegreya Sans/Timberheim — tema aktifken TÜM yazılar `--body-font` ile o oyunun fontuna geçer; kaynak: `D:\htmlprojects\stream-console\public\assets\fonts\`) + `icons\` (marka logoları, simple-icons SVG, fill=marka rengi gömülü; koyu zeminde X ve TikTok beyaz).
 - **Public repo:** `BYGGOLDENSTONE/BYGGOLDENSTONE.github.io` — GitHub Pages, master branch kökü. Push sonrası ~1-2 dk'da canlıya geçer.
 - Favicon = `favicon.png` — avatar'ın dairesel kırpılmış, köşeleri şeffaf hali (avatar.png kare olduğu için sekmede beyaz köşe çıkarıyordu; System.Drawing ile üretildi). Avatar değişirse favicon da yeniden üretilir.
 - Tüm dış linkler `target="_blank" rel="noopener"` (kullanıcı isteği).
